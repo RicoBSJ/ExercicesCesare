@@ -18,7 +18,7 @@ public class OrdreAlphabetiqueBis {
 		tab.add("b");
 		tab.add("a");
 		tab.add("r");
-		System.out.println("Dans le dÃ©sordre : " + tab);
+		System.out.println("Dans le désordre : " + tab);
 		Collections.sort(tab);
 		System.out.println("Dans l'ordre : " + tab);
 	}
