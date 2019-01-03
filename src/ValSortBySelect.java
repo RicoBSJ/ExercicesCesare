@@ -3,22 +3,23 @@ import java.util.Scanner;
 public class ValSortBySelect {
 
 	public static void main(String[] args) {
+
 		Scanner lectureClavier = new Scanner(System.in);
 		int nombre_valeur;
 		int i;
-		System.out.println("Entrez le nombre de valeur à saisir :");
+		System.out.println("Entrez le nombre de valeur ï¿½ saisir :");
 		nombre_valeur = lectureClavier.nextInt();
 		int[] tableau = new int[nombre_valeur];
 		for (i = 0; i < tableau.length; i++) {
-			System.out.print("Valeur n° " + (i + 1) + " : ");
+			System.out.print("Valeur nï¿½ " + (i + 1) + " : ");
 			tableau[i] = lectureClavier.nextInt();
 		}
-		/* Parcours le tableau et affiche les valeurs stockées */
+		/* Parcours le tableau et affiche les valeurs stockï¿½es */
 		for (int valeur : tableau) {
 			System.out.println(valeur);
 		}
-		/* Appel de la fonction tri_selection et affichage des valeurs triées */
-		System.out.println("Après le tri :");
+		/* Appel de la fonction tri_selection et affichage des valeurs triï¿½es */
+		System.out.println("Aprï¿½s le tri :");
 		for (int valeur : tableau) {
 			tri_selection(tableau, tableau.length);
 			System.out.println(valeur);

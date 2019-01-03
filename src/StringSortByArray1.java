@@ -1,13 +1,9 @@
 import java.util.*;
 
-public class StringSortByArray {
+public class StringSortByArray1 {
 
-
-	public StringSortByArray(String[] tab) {
-
-	}
-	// Résultat attendu : une chaîne de caractère qui est classée par ordre
-	// alphabétique a b c r z
+	// RÃ©sultat attendu : une chaÃ®ne de caractÃ¨re qui est classÃ©e par ordre
+	// alphabÃ©tique a b c r z
 
 	public static void main(String[] args) {
 
