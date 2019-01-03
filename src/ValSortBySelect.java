@@ -1,8 +1,8 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class SortAlphabetique {
+public class ValSortBySelect {
+
 	public static void main(String[] args) {
-
 		Scanner lectureClavier = new Scanner(System.in);
 		int nombre_valeur;
 		int i;
