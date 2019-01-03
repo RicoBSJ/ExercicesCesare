@@ -1,9 +1,24 @@
 
 public class OrdreAlphabetiqueB {
 
-	public OrdreAlphabetiqueB() {
+	public static void main(String[] args) {
+
+		String[] tab = { "z", "c", "b", "a", "r" };
+
+		for (String valeur : tab) {
+			tri_selection(tab, tab.length);
+			System.out.println(valeur);
+		}
+
+//		/* Appel de la fonction tri_selection et affichage des valeurs tri�es */
+//		System.out.println("Apr�s le tri :");
+//		for (int valeur : tableau) {
+//			tri_selection(tableau, tableau.length);
+//			System.out.println(valeur);
+//		}
 
 	}
+
 	/**
 	 * Renvoie l'indice du plus grand élément du tableau
 	 *
@@ -11,10 +26,12 @@ public class OrdreAlphabetiqueB {
 	 * taille du tableau
 	 *
 	 * return int l'indice du plus grand élément
+	 * 
 	 **/
-	int max(int tab[], int taille) {
+
+	private static String max(String[] tab, int taille) {
 		// on considère que le plus grand élément est le premier
-		int i = 0, indice_max = 0;
+		String i = "a", indice_max = "z";
 
 		while (i < taille) {
 			if (tab[i] > tab[indice_max])
@@ -33,12 +50,12 @@ public class OrdreAlphabetiqueB {
 	 *
 	 * return void
 	 **/
-	void echanger(int tab[], int x, int y) {
-		int tmp;
+	private static void echanger(String[] tab, int x, String string) {
+		String tmp;
 
 		tmp = tab[x];
-		tab[x] = tab[y];
-		tab[y] = tmp;
+		tab[x] = tab[string];
+		tab[string] = tmp;
 	}
 
 	/**
@@ -48,8 +65,8 @@ public class OrdreAlphabetiqueB {
 	 *
 	 * return void
 	 **/
-	void tri_selection(int tab[], int taille) {
-		int indice_max;
+	private static void tri_selection(String tab[], int taille) {
+		String indice_max;
 
 		// à chaque tour de boucle, on va déplacer le plus grand élément
 		// vers la fin du tableau, on diminue donc à chaque fois sa taille
@@ -62,11 +79,5 @@ public class OrdreAlphabetiqueB {
 
 			echanger(tab, taille - 1, indice_max); // on échange le dernier élément avec le plus grand
 		}
-	}
-
-	public static void main(String[] args) {
-
-		String[] tab = { "z", "c", "b", "a", "r" };
-
 	}
 }

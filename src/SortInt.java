@@ -1,32 +1,21 @@
-import java.util.Scanner;
 
 public class SortInt {
 
 	public static void main(String[] args) {
 
 		int[] Tab = { 1, 8, 3, 9, 10 };
-		int taille = Tab.length;
 		
-		Scanner lectureClavier = new Scanner(System.in);
-		int nombre_valeur;
-		int i;
-		System.out.println("Entrez le nombre de valeur à saisir :");
-		nombre_valeur = lectureClavier.nextInt();
-		int[] tableau = new int[nombre_valeur];
-		for (i = 0; i < tableau.length; i++) {
-			System.out.print("Valeur n° " + (i + 1) + " : ");
-			tableau[i] = lectureClavier.nextInt();
-		}
-		/* Parcours le tableau et affiche les valeurs stockées */
-		for (int valeur : tableau) {
+		for (int valeur : Tab) {
+			tri_selection(Tab, Tab.length);
 			System.out.println(valeur);
-		}
-		/* Appel de la fonction tri_selection et affichage des valeurs triées */
-		System.out.println("Après le tri :");
-		for (int valeur : tableau) {
-			tri_selection(tableau, tableau.length);
-			System.out.println(valeur);
-		}
+			}
+
+//		/* Appel de la fonction tri_selection et affichage des valeurs triées */
+//		System.out.println("Après le tri :");
+//		for (int valeur : tableau) {
+//			tri_selection(tableau, tableau.length);
+//			System.out.println(valeur);
+//		}
 
 	}
 
