@@ -13,10 +13,6 @@ public class OrdreAlphabetique {
 	public static void main(String[] args) {
 
 		String[] tab = { "z", "c", "b", "a", "r" };
-		for (String element : tab) {
-			Arrays.sort(element);
-			System.out.println(element);
-		}
-	}
 
+	}
 }
