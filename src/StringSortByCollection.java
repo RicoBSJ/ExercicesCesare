@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class StringSortByArray1 {
+public class StringSortByCollection {
 
 	// Résultat attendu : une chaîne de caractère qui est classée par ordre
 	// alphabétique a b c r z
