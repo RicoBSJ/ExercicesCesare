@@ -8,10 +8,11 @@ public class OrdreAlphabetique {
 	public static void main(String[] args) {
 		String[] tab = { "z", "c", "b", "a", "r" };
 		affiche_tableau(tab);
-//		String[] tab2 = new String[5];
-		int j = 0;
+		String[] tab2 = new String[5];
+		int j = 4;
+		
 		for (int i = 0; i < tab.length; i++) {
-			tab[i] = tab[4];
+			tab[i] = tab2[j];
 			if (i > j) {
 				tab[i] = tab[4];
 			} else {
