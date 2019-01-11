@@ -5,6 +5,7 @@ public class OrdreAlpha1 {
 		// Résultat attendu : une chaîne de caractère qui est classée par ordre
 		// alphabétique a b c r z
 		String[] tab = { "z", "c", "b", "a", "r" };
+		char[] tab2 = { 5 };
 		affiche_tableau(tab);
 
 		for (int i = 0; i < tab.length; i++) {
