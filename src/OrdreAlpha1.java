@@ -10,7 +10,14 @@ public class OrdreAlpha1 {
 
 		for (int i = 0; i < tab.length; i++) {
 			char c = tab[i].charAt(0);
-			System.out.println(c);
+			for (char j = 'i'; j < tab2.length; j++) {
+				tab2['j'] = j;
+				j = (char) i;
+				System.out.println(j);
+//				if (tab2[char k] > tab2[char l]) {
+//					
+//				}
+			}
 		}
 	}
 
