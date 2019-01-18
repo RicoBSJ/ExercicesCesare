@@ -10,9 +10,9 @@ public class Triangle {
 		int j;
 
 		System.out.print("combien de lignes ? ");
-		Scanner sc = new Scanner (System.in);
-		nLignes = sc.nextInt();
-//		nLignes = Clavier.lireInt();
+//		Scanner sc = new Scanner (System.in);
+//		nLignes = sc.nextInt();
+		nLignes = Clavier.lireInt();
 		for (numLigne = 0; numLigne < nLignes; numLigne++) {
 			nEspaces = nLignes - numLigne - 1;
 			for (j = 0; j < nEspaces; j++) {
@@ -24,5 +24,4 @@ public class Triangle {
 			System.out.println();
 		}
 	}
-
 }
