@@ -1,7 +1,4 @@
 
-
-import com.Constante;
-
 public class EssaiBooleen2 {
 
 	public static void main(String[] args) {
@@ -22,8 +19,7 @@ public class EssaiBooleen2 {
 //			System.out.println(output);
 //		}
 
-		String[] tabEssai = new String[7];
-		tabEssai = Constante.tabColor;
+		String[] tabEssai = { "vert", "orange", "jaune", "gris", "noir", "rouge", "bleu" };
 		String[] tabResultat = { "vert", "orange", "jaune", "gris", "noir", "rouge", "bleu" };
 		boolean reponse = false;
 		String str = String.valueOf(reponse);

@@ -3,10 +3,9 @@ public class Compare {
 	
 	public static boolean compare(String tableauJoueur[], String tableauJeu[]) {
 	
-	String tableauJeu2[] = new String[Constante.longueurCombinaison];
-	String tableauJoueur2[] = new String[Constante.longueurCombinaison];
-		
-	@SuppressWarnings("unused")
+	String tableauJeu2[] = new String[4];
+	String tableauJoueur2[] = new String[4];
+
 	String resultat = " ";
 	boolean present;
 	boolean bienPlace;
