@@ -7,15 +7,15 @@ public class EssaiBooleen2 {
 		String[] tabResultat = { "vert", "orange", "jaune", "gris", "noir", "rouge", "bleu" };
 		boolean reponse = false;
 		String str = String.valueOf(reponse);
-		String strArray[] = str.split(" ");
+		String[] strArray = str.split(" ");
 		for (int i = 0; i < tabEssai.length; i++) {
-			if (strArray[i] == "true") {
+			if (strArray[i] == "false") {
 				tabResultat[i] = tabEssai[i];
-				if (strArray[i] == "false") {
-					tabResultat[i] = tabEssai[i + 1];
+				if (strArray[i] == "true") {
+					tabResultat[i] = tabEssai[i];
 				}
-				System.out.println(tabResultat[i]);
 			}
 		}
+		System.out.println(tabResultat);
 	}
 }
