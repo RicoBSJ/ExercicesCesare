@@ -21,5 +21,7 @@ public class Decaler {
 		int[] unOrderedArr = { 1, 2, 3, 4, 5, 6, 7, 8 };
 		int orderToRotate = 1;
 		decaler(unOrderedArr, orderToRotate);
+		System.out.println();
+		decaler(unOrderedArr, orderToRotate);
 	}
 }
