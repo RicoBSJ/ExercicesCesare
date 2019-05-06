@@ -4,30 +4,45 @@ import java.util.Scanner;
 public class Copy {
 
 	private static String[] tabColor = { "vert", "orange", "jaune", "gris" };
-	static public int longueurCombinaison = 4;
-	static public int nombreEssai = 5;
+	private static int longueurCombinaison = 4;
+	private static int nombreEssai = 5;
 	private static String[] presenteEtBienPlace;
 	private static String[] presenteEtMalPlace;
 	private static String[] copy;
 	private static int nbrEssaiDef = 0;
 	
+	/*
+	 * private creerCombinaison { Si nbrEssaiDef = 0 > createTabColor Si nbrEssaiDef
+	 * != 0 > récupérer presenteEtBienPlace for () { Créer une copie de
+	 * presenteEtBienPlace Si l'index sur lequel on se trouve = null, on vérifie
+	 * qu'il y des couleurs disponibles dans presenteEtMalPlace S'il y en a on prend
+	 * une couleur qui remlacera null S'il n'y en a pas, on prend unr nouvelle
+	 * couleur aléatoire dans presenteEtMalPlace On remplace null par cette couleur
+	 * dans presenteEtBienPlace et cette couleur par null dans presenteEtMalPlace
+	 * return copie }
+	 */
+	
 	private static String[] creerCombinaison() {
 		if (nbrEssaiDef == 0) {
 			String tabComp[] = createTabColor(tabColor);
+			System.out.println(Arrays.toString(tabComp));
 			if (nbrEssaiDef != 0) {
 				tabComp = presenteEtBienPlace;
+				System.out.println(Arrays.toString(tabComp));
 			}
 			for (int i = 0; i < tabComp.length; i++) {
-				copy = presenteEtBienPlace;
-				if (presenteEtBienPlace[i] == null && presenteEtMalPlace[i] != null) {
-					presenteEtBienPlace[i] = presenteEtMalPlace[i];
-					if (presenteEtBienPlace[i] == null && presenteEtMalPlace[i] == null) {
+				copy = tabComp;// remplacer presenteEtBienPlace par tabComp
+				if (tabComp[i] == null && presenteEtMalPlace[i] != null) {
+					tabComp[i] = presenteEtMalPlace[i];
+					if (tabComp[i] == null && presenteEtMalPlace[i] == null) {
 						presenteEtMalPlace[i] = tabColor[i];
 					}
-					presenteEtBienPlace[i] = presenteEtMalPlace[i];
+					tabComp[i] = presenteEtMalPlace[i];
 					presenteEtMalPlace[i] = null;
 				}
 			}
+			System.out.println(Arrays.toString(copy));
+			System.out.println(Arrays.toString(tabComp));
 		}
 		return copy;
 	}
@@ -79,7 +94,6 @@ public class Copy {
 	}
 	
 	private static boolean compareDefenseur(String tableauJoueur[], String tableauJeu[]) {
-		nbrEssaiDef++;
 		int nbrPresent = 0;
 		int nbrBienPlace = 0;
 		for (int i = 0; i < tableauJoueur.length; i++) {
