@@ -8,9 +8,10 @@ public class Copy {
 	private static int nombreEssai = 5;
 	private static String[] presenteEtBienPlace;
 	private static String[] presenteEtMalPlace;
-	private static String[] copy;
 	private static int nbrEssaiDef = 0;
-	
+	private static String[] copy;
+	private static String[] tabComp;
+
 	/*
 	 * private creerCombinaison { Si nbrEssaiDef = 0 > createTabColor Si nbrEssaiDef
 	 * != 0 > récupérer presenteEtBienPlace for () { Créer une copie de
@@ -21,17 +22,20 @@ public class Copy {
 	 * dans presenteEtBienPlace et cette couleur par null dans presenteEtMalPlace
 	 * return copie }
 	 */
-	
+
 	private static String[] creerCombinaison() {
+
 		if (nbrEssaiDef == 0) {
-			String tabComp[] = createTabColor(tabColor);
+			tabComp = createTabColor(tabColor);
+			System.out.print("CTC tabComp :");
 			System.out.println(Arrays.toString(tabComp));
 			if (nbrEssaiDef != 0) {
 				tabComp = presenteEtBienPlace;
+				System.out.println("PEBP tabComp :");
 				System.out.println(Arrays.toString(tabComp));
 			}
 			for (int i = 0; i < tabComp.length; i++) {
-				copy = tabComp;// remplacer presenteEtBienPlace par tabComp
+				copy = tabComp;
 				if (tabComp[i] == null && presenteEtMalPlace[i] != null) {
 					tabComp[i] = presenteEtMalPlace[i];
 					if (tabComp[i] == null && presenteEtMalPlace[i] == null) {
@@ -41,17 +45,19 @@ public class Copy {
 					presenteEtMalPlace[i] = null;
 				}
 			}
-			System.out.println(Arrays.toString(copy));
-			System.out.println(Arrays.toString(tabComp));
 		}
+		System.out.print("tabComp :");
+		System.out.println(Arrays.toString(tabComp));
+		System.out.print("copy :");
+		System.out.println(Arrays.toString(copy));
 		return copy;
 	}
 
 	public static void main(String[] args) {
 		initializeTab();
-		System.out.println("\rL'ordinateur a droit � " + nombreEssai + " essais");
+		System.out.println("\rL'ordinateur a droit à " + nombreEssai + " essais");
 		String[] tableauDefenseur = askTabColor();
-		System.out.print("\rLe d�fenseur a entr� la combinaison : ");
+		System.out.print("\rLe défenseur a entré la combinaison : ");
 		dev(tableauDefenseur);
 		boolean win = false;
 
@@ -77,7 +83,7 @@ public class Copy {
 		}
 		return tab;
 	}
-	
+
 	private static double random(double min, double max) {
 		return min + Math.random() * (max - min);
 	}
@@ -86,13 +92,15 @@ public class Copy {
 		presenteEtBienPlace = new String[longueurCombinaison];
 		presenteEtMalPlace = new String[longueurCombinaison];
 		copy = new String[longueurCombinaison];
+		tabComp = new String[longueurCombinaison];
 		for (int i = 0; i < longueurCombinaison; i++) {
 			presenteEtBienPlace[i] = null;
 			presenteEtMalPlace[i] = null;
 			copy[i] = null;
+			tabComp[i] = null;
 		}
 	}
-	
+
 	private static boolean compareDefenseur(String tableauJoueur[], String tableauJeu[]) {
 		int nbrPresent = 0;
 		int nbrBienPlace = 0;
@@ -109,18 +117,18 @@ public class Copy {
 				}
 			}
 		}
-		System.out.print("presenteEtMalPlace :");
+		System.out.print("CD presenteEtMalPlace :");
 		System.out.println(Arrays.toString(presenteEtMalPlace));
-		System.out.print("presenteEtBienPlace :");
+		System.out.print("CD presenteEtBienPlace :");
 		System.out.println(Arrays.toString(presenteEtBienPlace));
-		System.out.println(nbrPresent + " couleurs sont pr�sentes et " + nbrBienPlace + " sont bien plac�es");
+		System.out.println(nbrPresent + " couleurs sont présentes et " + nbrBienPlace + " sont bien placées");
 		return nbrBienPlace == tableauJeu.length;
 	}
-	
+
 	private static String[] askTabColor() {
 		Scanner sc = new Scanner(System.in);
 		String[] resultat = new String[longueurCombinaison];
-		System.out.println("\nVeuillez entrer votre combinaison � " + longueurCombinaison + " couleurs : ");
+		System.out.println("\nVeuillez entrer votre combinaison à " + longueurCombinaison + " couleurs : ");
 		System.out.println("\rVoici les couleurs disponibles : " + Arrays.toString(tabColor));
 		for (int i = 0; i < resultat.length; i++) {
 			System.out.println("\rCouleur " + (i + 1) + " :");
@@ -128,12 +136,12 @@ public class Copy {
 		}
 		return resultat;
 	}
-	
+
 	private static void dev(String[] tab) {
 		for (int i = 0; i < tab.length; i++) {
 			System.out.print(tab[i] + " ");
 		}
 		System.out.println();
 	}
-	
+
 }
