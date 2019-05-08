@@ -1,9 +1,9 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Copy {
 
 	private static String[] tabColor = { "vert", "orange", "jaune", "gris" };
+	private static String[] totalColor = { "vert", "orange", "jaune", "gris", "noir", "rouge", "bleu" };
 	private static int longueurCombinaison = 4;
 	private static int nombreEssai = 5;
 	private static String[] presenteEtBienPlace;
@@ -24,32 +24,23 @@ public class Copy {
 	 */
 
 	private static String[] creerCombinaison() {
-
 		if (nbrEssaiDef == 0) {
 			tabComp = createTabColor(tabColor);
-			System.out.print("CTC tabComp :");
-			System.out.println(Arrays.toString(tabComp));
 			if (nbrEssaiDef != 0) {
 				tabComp = presenteEtBienPlace;
-				System.out.println("PEBP tabComp :");
-				System.out.println(Arrays.toString(tabComp));
 			}
-			for (int i = 0; i < tabComp.length; i++) {
+			for (int i = 0; i < longueurCombinaison; i++) {
 				copy = tabComp;
 				if (tabComp[i] == null && presenteEtMalPlace[i] != null) {
 					tabComp[i] = presenteEtMalPlace[i];
 					if (tabComp[i] == null && presenteEtMalPlace[i] == null) {
-						presenteEtMalPlace[i] = tabColor[i];
+						presenteEtMalPlace[i] = totalColor[i];
 					}
 					tabComp[i] = presenteEtMalPlace[i];
 					presenteEtMalPlace[i] = null;
 				}
 			}
 		}
-		System.out.print("tabComp :");
-		System.out.println(Arrays.toString(tabComp));
-		System.out.print("copy :");
-		System.out.println(Arrays.toString(copy));
 		return copy;
 	}
 
@@ -61,10 +52,9 @@ public class Copy {
 		dev(tableauDefenseur);
 		boolean win = false;
 
-		String[] premierEssai = creerCombinaison();
-		System.out.println("\rL'ordinateur essaie avec : " + Arrays.toString(premierEssai));
-
 		while (!win && nbrEssaiDef < nombreEssai) {
+			String[] premierEssai = creerCombinaison();
+			System.out.println("\rL'ordinateur essaie avec : " + Arrays.toString(premierEssai));
 			nbrEssaiDef++;
 			win = compareDefenseur(premierEssai, tableauDefenseur);
 		}
@@ -117,10 +107,6 @@ public class Copy {
 				}
 			}
 		}
-		System.out.print("CD presenteEtMalPlace :");
-		System.out.println(Arrays.toString(presenteEtMalPlace));
-		System.out.print("CD presenteEtBienPlace :");
-		System.out.println(Arrays.toString(presenteEtBienPlace));
 		System.out.println(nbrPresent + " couleurs sont présentes et " + nbrBienPlace + " sont bien placées");
 		return nbrBienPlace == tableauJeu.length;
 	}
@@ -129,7 +115,7 @@ public class Copy {
 		Scanner sc = new Scanner(System.in);
 		String[] resultat = new String[longueurCombinaison];
 		System.out.println("\nVeuillez entrer votre combinaison à " + longueurCombinaison + " couleurs : ");
-		System.out.println("\rVoici les couleurs disponibles : " + Arrays.toString(tabColor));
+		System.out.println("\rVoici les couleurs disponibles : " + Arrays.toString(totalColor));
 		for (int i = 0; i < resultat.length; i++) {
 			System.out.println("\rCouleur " + (i + 1) + " :");
 			resultat[i] = sc.nextLine();
