@@ -2,46 +2,50 @@ import java.util.*;
 
 public class Copy {
 
-	private static String[] tabColor = { "vert", "orange", "jaune", "gris" };
-	private static String[] totalColor = { "vert", "orange", "jaune", "gris", "noir", "rouge", "bleu" };
+	private static String[] tabColor = {"bleu","vert","orange","jaune","gris","noir","rouge"};
 	private static int longueurCombinaison = 4;
-	private static int nombreEssai = 5;
+	private static int nombreEssai = 100;
 	private static String[] presenteEtBienPlace;
 	private static String[] presenteEtMalPlace;
 	private static int nbrEssaiDef = 0;
-	private static String[] copy;
-	private static String[] tabComp;
 
-	/*
-	 * private creerCombinaison { Si nbrEssaiDef = 0 > createTabColor Si nbrEssaiDef
-	 * != 0 > récupérer presenteEtBienPlace for () { Créer une copie de
-	 * presenteEtBienPlace Si l'index sur lequel on se trouve = null, on vérifie
-	 * qu'il y des couleurs disponibles dans presenteEtMalPlace S'il y en a on prend
-	 * une couleur qui remlacera null S'il n'y en a pas, on prend unr nouvelle
-	 * couleur aléatoire dans presenteEtMalPlace On remplace null par cette couleur
-	 * dans presenteEtBienPlace et cette couleur par null dans presenteEtMalPlace
-	 * return copie }
-	 */
-
-	private static String[] creerCombinaison() {
-		if (nbrEssaiDef == 0) {
-			tabComp = createTabColor(tabColor);
-			if (nbrEssaiDef != 0) {
-				tabComp = presenteEtBienPlace;
-			}
-			for (int i = 0; i < longueurCombinaison; i++) {
-				copy = tabComp;
-				if (tabComp[i] == null && presenteEtMalPlace[i] != null) {
-					tabComp[i] = presenteEtMalPlace[i];
-					if (tabComp[i] == null && presenteEtMalPlace[i] == null) {
-						presenteEtMalPlace[i] = totalColor[i];
-					}
-					tabComp[i] = presenteEtMalPlace[i];
-					presenteEtMalPlace[i] = null;
+	private static String cherchePresent() {
+		ArrayList<String> pool = new ArrayList<String>();
+		for (int i = 0; i < presenteEtMalPlace.length; i++) {
+			if (presenteEtMalPlace[i] != null) {
+				if (pool.contains(presenteEtMalPlace[i])) {
+					pool.add(presenteEtMalPlace[i]);
 				}
 			}
 		}
-		return copy;
+		Random rand = new Random();
+		if (pool.isEmpty()) {
+			return null;
+		} else {
+			return pool.get(rand.nextInt(pool.size()));
+		}
+	}
+	
+	private static String[] creerCombinaison() {
+		String[] tabComp;
+		if (nbrEssaiDef == 0) {
+			tabComp = createTabColor(tabColor);
+		} else {
+			tabComp = presenteEtBienPlace.clone();
+		}
+		for (int i = 0; i < tabComp.length; i++) {
+			if (tabComp[i] == null) {
+				String result = cherchePresent();
+				if (result != null) {
+					tabComp[i] = result;
+				} else {
+					Random rand = new Random();
+					String newColor = tabColor[rand.nextInt(tabColor.length)];
+					tabComp[i] = newColor;
+				}
+			}
+		}
+		return tabComp;
 	}
 
 	public static void main(String[] args) {
@@ -53,10 +57,10 @@ public class Copy {
 		boolean win = false;
 
 		while (!win && nbrEssaiDef < nombreEssai) {
-			String[] premierEssai = creerCombinaison();
-			System.out.println("\rL'ordinateur essaie avec : " + Arrays.toString(premierEssai));
+			String[] essaiComp = creerCombinaison();
+			System.out.println("\rL'ordinateur essaie avec : " + Arrays.toString(essaiComp));
 			nbrEssaiDef++;
-			win = compareDefenseur(premierEssai, tableauDefenseur);
+			win = compareDefenseur(essaiComp, tableauDefenseur);
 		}
 		if (win == true) {
 			System.out.println("\rL'ordinateur gagne en " + nbrEssaiDef + " essai(s)");
@@ -81,13 +85,9 @@ public class Copy {
 	private static void initializeTab() {
 		presenteEtBienPlace = new String[longueurCombinaison];
 		presenteEtMalPlace = new String[longueurCombinaison];
-		copy = new String[longueurCombinaison];
-		tabComp = new String[longueurCombinaison];
 		for (int i = 0; i < longueurCombinaison; i++) {
 			presenteEtBienPlace[i] = null;
 			presenteEtMalPlace[i] = null;
-			copy[i] = null;
-			tabComp[i] = null;
 		}
 	}
 
@@ -115,7 +115,7 @@ public class Copy {
 		Scanner sc = new Scanner(System.in);
 		String[] resultat = new String[longueurCombinaison];
 		System.out.println("\nVeuillez entrer votre combinaison à " + longueurCombinaison + " couleurs : ");
-		System.out.println("\rVoici les couleurs disponibles : " + Arrays.toString(totalColor));
+		System.out.println("\rVoici les couleurs disponibles : " + Arrays.toString(tabColor));
 		for (int i = 0; i < resultat.length; i++) {
 			System.out.println("\rCouleur " + (i + 1) + " :");
 			resultat[i] = sc.nextLine();
